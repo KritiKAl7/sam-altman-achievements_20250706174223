@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Altman: Architect of the AI Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--primary);
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.investopedia.com/thmb/iUfEp6JYwwtQhjlXfbs9KAOoGH4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/INV_SamAltman_GettyImages-2153474303-85e8dafc100b40f586c3ef573ee59b00.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+        }
+        .flex-container {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .flex-item {
+            flex: 1;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::after {
+            right: -10px;
+        }
+        .right::after {
+            left: -10px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        .social-links {
+            margin: 1rem 0;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                margin: 2.5rem 0;
+            }
+            .flex-container {
+                flex-direction: column;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::after {
+                left: 15px;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Sam Altman</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#early-life">Early Life</a></li>
+                <li><a href="#y-combinator">Y Combinator</a></li>
+                <li><a href="#openai">OpenAI</a></li>
+                <li><a href="#ventures">Ventures</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#future">Future</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Sam Altman: Architect of the AI Future</h1>
+            <p>American entrepreneur, investor, and CEO of OpenAI, leading the AI revolution.</p>
+            <a href="#early-life" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section id="early-life">
+        <div class="container">
+            <h2>Early Life & Education</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <img src="https://www.investopedia.com/thmb/iUfEp6JYwwtQhjlXfbs9KAOoGH4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/INV_SamAltman_GettyImages-2153474303-85e8dafc100b40f586c3ef573ee59b00.jpg" alt="Sam Altman" class="profile-img">
+                </div>
+                <div class="flex-item">
+                    <div class="card">
+                        <h3>Background</h3>
+                        <p>Born on April 22, 1985, in Chicago, Illinois, Sam Altman grew up in St. Louis, Missouri. His journey into technology began early when he received his first Apple Macintosh computer at age eight.</p>
+                        <p>He attended John Burroughs School in St. Louis before enrolling at Stanford University to study computer science. However, his entrepreneurial spirit led him to drop out and pursue his tech ventures.</p>
+                        <p>In 2005, at just 19 years old, Altman co-founded Loopt, a location-based social networking mobile application. The company was later acquired by Green Dot Corporation in 2012 for $43 million, marking his first significant success in the tech industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="y-combinator" class="bg-light">
+        <div class="container">
+            <h2>Y Combinator Era</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2011</h3>
+                        <p>Joined Y Combinator as a part-time partner</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2014</h3>
+                        <p>Became president of Y Combinator, succeeding Paul Graham</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2014-2019</h3>
+                        <p>Led Y Combinator through significant growth, supporting startups like Airbnb, Dropbox, Reddit, Instacart, and DoorDash</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2019</h3>
+                        <p>Stepped down as president to focus more on OpenAI</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Impact at Y Combinator</h3>
+                <p>Under Altman's leadership, Y Combinator expanded its portfolio and influence dramatically. The accelerator's valuation grew significantly, and it became known as the most prestigious startup accelerator in the world.</p>
+                <p>Altman implemented several innovative programs, including the YC Fellowship and YC Research, broadening the organization's impact beyond traditional startup acceleration.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="openai">
+        <div class="container">
+            <h2>OpenAI Leadership</h2>
+            <div class="card">
+                <h3>Co-founding OpenAI</h3>
+                <p>In 2015, Sam Altman co-founded OpenAI alongside Elon Musk and others with a mission to ensure that artificial general intelligence (AGI) benefits all of humanity. The organization was initially established as a non-profit research company.</p>
+                <p>In 2019, OpenAI transitioned to a "capped-profit" model through OpenAI LP, with Altman serving as CEO. This structure was designed to attract capital while still adhering to the organization's mission.</p>
+            </div>
+            <div class="chart-container" id="openai-growth-chart"></div>
+            <div class="card">
+                <h3>Revolutionary AI Models</h3>
+                <p>Under Altman's leadership, OpenAI has developed groundbreaking AI models:</p>
+                <ul>
+                    <li>GPT-3 (2020): 175 billion parameters, revolutionary text generation capabilities</li>
+                    <li>DALL-E (2021): Creating images from text descriptions</li>
+                    <li>ChatGPT (2022): Conversational AI that reached 100 million users in just two months</li>
+                    <li>GPT-4 (2023): Multimodal capabilities with significantly improved reasoning</li>
+                </ul>
+                <p>In 2023, Microsoft invested $10 billion in OpenAI, valuing the company at approximately $29 billion and cementing its position as a leader in AI development.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ventures" class="bg-light">
+        <div class="container">
+            <h2>Other Ventures & Investments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Investment</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Helion Energy</td>
+                        <td>$375 Million</td>
+                        <td>Nuclear fusion energy company</td>
+                    </tr>
+                    <tr>
+                        <td>Retro Biosciences</td>
+                        <td>$180 Million</td>
+                        <td>Longevity and anti-aging research</td>
+                    </tr>
+                    <tr>
+                        <td>Worldcoin</td>
+                        <td>Co-founder</td>
+                        <td>Cryptocurrency project with biometric identity verification</td>
+                    </tr>
+                    <tr>
+                        <td>Oklo Inc.</td>
+                        <td>Significant investment</td>
+                        <td>Nuclear energy startup</td>
+                    </tr>
+                    <tr>
+                        <td>Reddit, Stripe, Humane, Figure AI</td>
+                        <td>Various</td>
+                        <td>Notable tech investments</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card">
+                <h3>Hydrazine Capital</h3>
+                <p>Altman founded Hydrazine Capital, a venture capital firm that has invested in numerous early-stage technology companies. Through this vehicle, he has supported a wide range of innovative startups across various sectors.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <h2>Key Achievements & Impact</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <div class="card">
+                        <h3>Industry Impact</h3>
+                        <p>Sam Altman has been instrumental in shaping the modern tech landscape through his leadership at Y Combinator and OpenAI. His vision has accelerated the development and adoption of artificial intelligence technologies worldwide.</p>
+                        <p>As an advocate for responsible AI development, Altman has consistently emphasized the importance of safety and ethical considerations in advancing AI capabilities.</p>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="card">
+                        <h3>Recognition</h3>
+                        <p>Named one of Time magazine's 100 most influential people in 2023</p>
+                        <p>Net worth estimated between $1.7 billion and $2 billion as of mid-2025</p>
+                        <p>Recognized as a leading voice in technology policy and AI governance</p>
+                        <p>Frequent speaker at major technology conferences and government hearings on AI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="future" class="bg-light">
+        <div class="container">
+            <h2>Future Outlook</h2>
+            <div class="card">
+                <h3>Vision for AI</h3>
+                <p>Altman envisions a future where AI agents become integral to the workforce, augmenting human capabilities rather than replacing them. He has spoken extensively about the need for new AI-centric hardware and infrastructure to support the next generation of AI applications.</p>
+                <p>He advocates for thoughtful regulation of AI while ensuring innovation continues to flourish. Altman believes that artificial general intelligence (AGI) could help solve some of humanity's most pressing challenges, from climate change to healthcare.</p>
+                <button class="btn" id="vision-btn">Learn More About Sam's Vision</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources">
+        <div class="container">
+            <h2>Resources & Further Reading</h2>
+            <div class="card">
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Sam_Altman" target="_blank">Sam Altman on Wikipedia</a></li>
+                    <li><a href="https://www.ycombinator.com/blog/sam-altman-for-president" target="_blank">Sam Altman on Y Combinator</a></li>
+                    <li><a href="https://time.com/collection/100-most-influential-people-2023/6269831/sam-altman/" target="_blank">TIME 100: Sam Altman</a></li>
+                    <li><a href="https://www.forbes.com/profile/sam-altman/" target="_blank">Forbes Profile</a></li>
+                    <li><a href="https://blog.samaltman.com/" target="_blank">Sam Altman's Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Website created by Pokee Agent.</p>
+            <p>&copy; 2025</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="GitHub">🐙</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Simple chart for OpenAI growth
+        const drawChart = () => {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'myChart';
+            canvas.width = document.getElementById('openai-growth-chart').offsetWidth;
+            canvas.height = document.getElementById('openai-growth-chart').offsetHeight;
+            document.getElementById('openai-growth-chart').appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            const years = [2019, 2020, 2021, 2022, 2023];
+            const values = [1, 3, 10, 20, 29];
+            
+            // Draw axes
+            ctx.beginPath();
+            ctx.moveTo(50, 250);
+            ctx.lineTo(550, 250);
+            ctx.moveTo(50, 250);
+            ctx.lineTo(50, 50);
+            ctx.stroke();
+            
+            // Draw labels
+            ctx.font = '12px Roboto';
+            ctx.fillText('Year', 300, 280);
+            ctx.save();
+            ctx.rotate(-Math.PI/2);
+            ctx.fillText('Valuation ($ Billions)', -150, 30);
+            ctx.restore();
+            
+            // Draw data points and lines
+            ctx.beginPath();
+            const xStep = 500 / (years.length - 1);
+            const yScale = 200 / Math.max(...values);
+            
+            for (let i = 0; i < years.length; i++) {
+                const x = 50 + i * xStep;
+                const y = 250 - values[i] * yScale;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+                
+                // Draw point
+                ctx.fillStyle = '#3498db';
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw label
+                ctx.fillStyle = '#000';
+                ctx.fillText(years[i], x - 15, 270);
+                ctx.fillText('$' + values[i] + 'B', x - 15, y - 10);
+            }
+            
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        };
+
+        // Vision button interaction
+        document.getElementById('vision-btn').addEventListener('click', function() {
+            alert("Sam Altman envisions a future where AI and humans work together to solve humanity's biggest challenges. He believes in responsible AI development that benefits everyone while managing risks appropriately.");
+        });
+
+        // Draw chart when page loads
+        window.addEventListener('load', drawChart);
+        window.addEventListener('resize', function() {
+            const chartContainer = document.getElementById('openai-growth-chart');
+            chartContainer.innerHTML = '';
+            drawChart();
+        });
+    </script>
+</body>
+</html>
